@@ -25,7 +25,7 @@ export class TodosListComponent implements OnInit {
       .subscribe(
         data => {
           this.todos = data;
-          console.log(data);
+          //console.log(data);
         },
         error => {
           console.log(error);
