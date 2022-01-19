@@ -1,3 +1,63 @@
-<div class="container">
-  <h1>Todos List</h1>
+<div class="container list row">
+
+  <div class="col-md-6">
+    <h4>Todos List</h4>
+    <ul class="list-group">
+      <li style="cursor: pointer;"
+        class="list-group-item"
+        *ngFor="let todo of todos; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveTodo(todo, i)"
+      >
+        {{ todo.todo }}
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-md-6">
+    <div *ngIf="currentTodo">
+      <h4>Todo</h4>
+      <div>
+        <label><strong>Todo:</strong></label> {{ currentTodo.todo }}
+      </div>
+      <div>
+        <label><strong>Completed:</strong></label>
+        {{ currentTodo.completed }}
+      </div>
+
+      <a class="btn btn-primary" routerLink="/todos/{{ currentTodo.id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentTodo">
+      <br />
+      <p>Please click on a todo...</p>
+    </div>
+  </div>
 </div>
+
+ <!-- <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+   <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTodos()">
+      Remove All
+    </button> -->
